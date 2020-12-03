@@ -43,7 +43,7 @@ while epochs < 100000:
     a_0 = a_0 - alpha * np.sum(error)/n
     a_1 = a_1 - alpha * np.sum(error * x_train)/n
     epochs += 1
-    # Every 10 steps, print out an evaluation
+    # Every 1000 steps, print out an evaluation
     if epochs % 10000 == 0:
         print(epochs)
         print("Error:", mean_sq_er)
