@@ -36,15 +36,15 @@ while epochs < 100000:
     # Calculate error per training example, which is the difference between the prediction and the actual value
     y = a_0 + a_1 * x_train
     error = y - y_train
-    # Consolidate errors into mean squared error (for evaluation purposes)
-    mean_sq_er = np.sum(error**2)
-    mean_sq_er = mean_sq_er/n
     # Adjust the weights according to the error
     a_0 = a_0 - alpha * np.sum(error)/n
     a_1 = a_1 - alpha * np.sum(error * x_train)/n
     epochs += 1
     # Every 1000 steps, print out an evaluation
     if epochs % 10000 == 0:
+        # Consolidate errors into mean squared error (for evaluation purposes)
+        mean_sq_er = np.sum(error ** 2)
+        mean_sq_er = mean_sq_er / n
         print(epochs)
         print("Error:", mean_sq_er)
         print("Yint:", a_0)
@@ -52,3 +52,5 @@ while epochs < 100000:
 print("Training Complete")
 print("Final yint:", a_0)
 print("Final slope:", a_1)
+
+# note that each epoch runs through all the training data and that we don't need a for loop with np arrays
