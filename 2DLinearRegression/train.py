@@ -1,7 +1,7 @@
-'''
+"""
 This is a simple iterative procedure intended to illustrate how gradient descent works. Data is generated randomly,
-based on a Guassian distribution, centered on a line. The model then attempts to find that line with linear regression.
-'''
+based on a Gaussian distribution, centered on a line. The model then attempts to find that line with linear regression.
+"""
 
 import pandas as pd
 import numpy as np
@@ -32,20 +32,23 @@ a_1 = 1
 
 # Runs 100000 times
 epochs = 0
-while(epochs < 100000):
+while epochs < 100000:
     # Calculate error per training example, which is the difference between the prediction and the actual value
     y = a_0 + a_1 * x_train
     error = y - y_train
     # Consolidate errors into mean squared error (for evaluation purposes)
     mean_sq_er = np.sum(error**2)
     mean_sq_er = mean_sq_er/n
-    # Adjust the weigths according to the error
+    # Adjust the weights according to the error
     a_0 = a_0 - alpha * np.sum(error)/n
     a_1 = a_1 - alpha * np.sum(error * x_train)/n
     epochs += 1
     # Every 10 steps, print out an evaluation
-    if(epochs%10 == 0):
+    if epochs % 10000 == 0:
         print(epochs)
-        print(mean_sq_er)
-print(a_0)
-print(a_1)
+        print("Error:", mean_sq_er)
+        print("Yint:", a_0)
+        print("Slope:", a_1)
+print("Training Complete")
+print("Final yint:", a_0)
+print("Final slope:", a_1)
